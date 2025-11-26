@@ -1,0 +1,135 @@
+<div class="news-container">
+  <!-- Header Section -->
+  <div class="news-header">
+    <h1 class="news-title">{{'news01-01' | translate}}</h1>
+    <p class="news-subtitle">{{'news01-02' | translate}}</p>
+    
+    <!-- Filtros de Categoria -->
+    <div class="news-filters">
+      <button 
+        class="filter-btn"
+        [class.active]="currentFilter === 'general'"
+        (click)="setFilter('general')">
+        {{'news.filter.general' | translate}}
+      </button>
+      <button 
+        class="filter-btn"
+        [class.active]="currentFilter === 'stocks'"
+        (click)="setFilter('stocks')">
+        {{'news.filter.stocks' | translate}}
+      </button>
+      <button 
+        class="filter-btn"
+        [class.active]="currentFilter === 'crypto'"
+        (click)="setFilter('crypto')">
+        {{'news.filter.crypto' | translate}}
+      </button>
+      <button 
+        class="filter-btn"
+        [class.active]="currentFilter === 'forex'"
+        (click)="setFilter('forex')">
+        {{'news.filter.forex' | translate}}
+      </button>
+      <button 
+        class="filter-btn"
+        [class.active]="currentFilter === 'press'"
+        (click)="setFilter('press')">
+        {{'news.filter.press' | translate}}
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading-section">
+    <div class="loading-spinner"></div>
+    <p>{{'news01-03' | translate}}</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="error-section">
+    <div class="error-icon">⚠️</div>
+    <h3>{{'news01-04' | translate}}</h3>
+    <p>{{ error }}</p>
+    <button class="retry-btn" (click)="loadNews()">{{'news01-05' | translate}}</button>
+  </div>
+
+  <!-- News Grid -->
+  <div *ngIf="!loading && !error && news.length > 0" class="news-grid">
+    <div 
+      *ngFor="let article of news" 
+      class="news-card"
+      (click)="openArticle(article)">
+      
+      <!-- Article Image -->
+      <div class="news-image">
+        <img 
+          [src]="article.image || 'assets/default-news.jpg'" 
+          [alt]="article.title"
+          (error)="handleImageError($event)">
+        <div class="news-category">{{ getCategoryLabel(article.category) }}</div>
+      </div>
+
+      <!-- Article Content -->
+      <div class="news-content">
+        <h3 class="news-article-title">{{ article.title }}</h3>
+        <p class="news-article-description">{{ article.description || article.text || ('news01-06' | translate) }}</p>
+        
+        <div class="news-meta">
+          <div class="news-source">
+            <span class="source-icon">📰</span>
+            {{ article.site || article.source || ('news01-07' | translate) }}
+          </div>
+          <div class="news-date">
+            <span class="date-icon">🕒</span>
+            {{ formatDate(article.publishedDate || article.date) }}
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div *ngIf="article.tickers && article.tickers.length > 0" class="news-tags">
+          <span 
+            *ngFor="let ticker of article.tickers.slice(0, 3)"
+            class="news-tag">
+            {{ ticker }}
+          </span>
+          <span *ngIf="article.tickers.length > 3" class="news-tag-more">
+            +{{ article.tickers.length - 3 }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading && !error && news.length === 0" class="empty-section">
+    <div class="empty-icon">📰</div>
+    <h3>{{'news01-08' | translate}}</h3>
+    <p>{{'news01-09' | translate}}</p>
+  </div>
+
+  <!-- Load More Button -->
+  <div *ngIf="!loading && !error && news.length > 0" class="load-more-section">
+    <button 
+      class="load-more-btn"
+      (click)="loadMore()"
+      [disabled]="loadingMore">
+      <span *ngIf="loadingMore" class="loading-dots">{{'news01-10' | translate}}</span>
+      <span *ngIf="!loadingMore">{{'news01-11' | translate}}</span>
+    </button>
+  </div>
+
+  <!-- Market Overview -->
+  <div *ngIf="usdBrlPrice" class="market-overview">
+    <h3>{{'news01-12' | translate}}</h3>
+    <div class="market-data">
+      <div class="market-item">
+        <span class="market-label">{{'news01-13' | translate}}</span>
+        <span class="market-value">R$ {{ usdBrlPrice | number:'1.2-2' }}</span>
+      </div>
+      <div class="market-item">
+        <span class="market-label">{{'news01-14' | translate}}</span>
+        <span class="market-value">{{ lastUpdate | date:'dd/MM/yyyy HH:mm' }}</span>
+      </div>
+    </div>
+  </div>
+</div>

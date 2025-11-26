@@ -1,0 +1,162 @@
+<!-- navbar.component.html -->
+<header class="site-navbar" [class.scrolled]="isScrolled">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-4 col-xl-2">
+        <h1 class="mb-0 site-logo">
+          <a routerLink="/" class="text-white mb-0" (click)="scrollToTop()">{{'navbar-01' | translate}}</a>
+        </h1>
+      </div>
+
+      <div class="col-4 col-xl-7 d-none d-xl-block">
+        <nav class="site-navigation">
+          <ul class="site-menu">
+            <li class="active"><a routerLink="/" (click)="scrollToTop()"><span>{{'navbar-02' | translate}}</span></a></li>
+            
+            <li class="has-children">
+              <a><span>{{'navbar-03' | translate}}</span></a>
+              <ul class="dropdown arrow-top">
+                <li><a routerLink="/account-types" (click)="scrollToTop()">{{'navbar-03' | translate}}</a></li>
+                <li><a routerLink="/account-types/standard-account" (click)="scrollToTop()">{{'navbar-04' | translate}}</a></li>
+                <li><a routerLink="/account-types/premium-account" (click)="scrollToTop()">{{'navbar-05' | translate}}</a></li>
+                <li><a routerLink="/account-types/vip-account" (click)="scrollToTop()">{{'navbar-06' | translate}}</a></li>
+              </ul>
+            </li>
+
+            <li class="has-children">
+              <a><span>{{'navbar-16' | translate}}</span></a>
+              <ul class="dropdown arrow-top">
+                <li><a routerLink="/market" (click)="scrollToTop()">{{'navbar-16' | translate}}</a></li>
+                <li><a routerLink="/market/forex" (click)="scrollToTop()">{{'market01-04' | translate}}</a></li>
+                <li><a routerLink="/market/indices" (click)="scrollToTop()">{{'market01-09' | translate}}</a></li>
+                <li><a routerLink="/market/acoes" (click)="scrollToTop()">{{'market01-14' | translate}}</a></li>
+                <li><a routerLink="/market/commodities" (click)="scrollToTop()">{{'market01-19' | translate}}</a></li>
+                <li><a routerLink="/market/cripto" (click)="scrollToTop()">{{'market01-23' | translate}}</a></li>
+              </ul>
+            </li>
+
+            <li class="has-children">
+              <a><span>{{'navbar-07' | translate}}</span></a>
+              <ul class="dropdown arrow-top">
+                <li><a routerLink="/how-it-works" (click)="scrollToTop()">{{'navbar-07' | translate}}</a></li>
+                <li><a routerLink="/how-it-works/register" (click)="scrollToTop()">{{'navbar-08' | translate}}</a></li>
+                <li><a routerLink="/how-it-works/initial-deposit" (click)="scrollToTop()">{{'navbar-09' | translate}}</a></li>
+                <li><a routerLink="/how-it-works/start" (click)="scrollToTop()">{{'navbar-10' | translate}}</a></li>
+              </ul>
+            </li>
+
+            <li><a routerLink="/about-us" (click)="scrollToTop()"><span>{{'navbar-11' | translate}}</span></a></li>
+            <li><a routerLink="/news" (click)="scrollToTop()"><span>{{'navbar-12' | translate}}</span></a></li>
+            <li><a routerLink="/faq" (click)="scrollToTop()"><span>{{'navbar-13' | translate}}</span></a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="col-4 col-xl-3 d-none d-xl-block">
+        <div class="navbar-right-content">
+          <div class="language-selector-right">
+            <button class="language-btn-right" (click)="toggleLanguageDropdown()" [class.active]="isLanguageDropdownOpen">
+              <span class="language-code">{{ currentLanguage.code.toUpperCase() }}</span>
+              <span class="dropdown-arrow">▾</span>
+            </button>
+            <div class="language-dropdown-right" [class.show]="isLanguageDropdownOpen">
+              <div *ngFor="let lang of languages" class="language-option-right" (click)="switchLanguage(lang.code)" [class.active]="currentLanguage.code === lang.code">
+                <span class="language-flag">{{ lang.flag }}</span>
+                <span class="language-name">{{ lang.name }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-buttons">
+            <button class="btn btn-primary" (click)="openLogin()">{{'navbar-14' | translate}}</button>
+            <button class="btn btn-secondary" (click)="openRealAccount()">{{'navbar-15' | translate}}</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4 d-inline-block d-xl-none py-3">
+        <a href="#" class="site-menu-toggle text-white" (click)="toggleMenu(); $event.preventDefault()">
+          <span class="icon-menu h3"></span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<div class="site-mobile-menu" [class.active]="isMenuOpen">
+  <div class="site-mobile-menu-header">
+    <div class="site-mobile-menu-close" (click)="closeMenu()">
+      <span class="icon-close2"></span>
+    </div>
+  </div>
+  <div class="site-mobile-menu-body">
+    <ul class="site-nav-wrap">
+      <li class="has-children">
+        <a href="#" (click)="toggleMobileDropdown($event)">
+          <span class="language-display-mobile">
+            <span class="language-flag">{{ currentLanguage.flag }}</span>
+            <span class="language-name">{{ currentLanguage.name }}</span>
+            <span class="mobile-dropdown-arrow">▾</span>
+          </span>
+        </a>
+        <ul class="dropdown">
+          <li *ngFor="let lang of languages">
+            <a (click)="switchLanguage(lang.code)" [class.active]="currentLanguage.code === lang.code">
+              <span class="language-option-mobile">
+                <span class="language-flag">{{ lang.flag }}</span>
+                <span class="language-name">{{ lang.name }}</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li><a routerLink="/" (click)="onNavLinkClick()">{{'navbar-02' | translate}}</a></li>
+
+      <li class="has-children">
+        <a href="#" (click)="toggleMobileDropdown($event)">{{'navbar-03' | translate}}<span class="mobile-dropdown-arrow">▾</span></a>
+        <ul class="dropdown">
+          <li><a routerLink="/account-types" (click)="onNavLinkClick()">{{'navbar-03' | translate}}</a></li>
+          <li><a routerLink="/account-types/standard-account" (click)="onNavLinkClick()">{{'navbar-04' | translate}}</a></li>
+          <li><a routerLink="/account-types/premium-account" (click)="onNavLinkClick()">{{'navbar-05' | translate}}</a></li>
+          <li><a routerLink="/account-types/vip-account" (click)="onNavLinkClick()">{{'navbar-06' | translate}}</a></li>
+        </ul>
+      </li>
+
+      <li class="has-children">
+        <a href="#" (click)="toggleMobileDropdown($event)">{{'navbar-16' | translate}}<span class="mobile-dropdown-arrow">▾</span></a>
+        <ul class="dropdown">
+          <li><a routerLink="/market" (click)="onNavLinkClick()">{{'navbar-16' | translate}}</a></li>
+          <li><a routerLink="/market/forex" (click)="onNavLinkClick()">{{'market01-04' | translate}}</a></li>
+          <li><a routerLink="/market/indices" (click)="onNavLinkClick()">{{'market01-09' | translate}}</a></li>
+          <li><a routerLink="/market/acoes" (click)="onNavLinkClick()">{{'market01-14' | translate}}</a></li>
+          <li><a routerLink="/market/commodities" (click)="onNavLinkClick()">{{'market01-19' | translate}}</a></li>
+          <li><a routerLink="/market/cripto" (click)="onNavLinkClick()">{{'market01-23' | translate}}</a></li>
+        </ul>
+      </li>
+
+      <li class="has-children">
+        <a href="#" (click)="toggleMobileDropdown($event)">{{'navbar-07' | translate}}<span class="mobile-dropdown-arrow">▾</span></a>
+        <ul class="dropdown">
+          <li><a routerLink="/how-it-works" (click)="onNavLinkClick()">{{'navbar-07' | translate}}</a></li>
+          <li><a routerLink="/how-it-works/register" (click)="onNavLinkClick()">{{'navbar-08' | translate}}</a></li>
+          <li><a routerLink="/how-it-works/initial-deposit" (click)="onNavLinkClick()">{{'navbar-09' | translate}}</a></li>
+          <li><a routerLink="/how-it-works/start" (click)="onNavLinkClick()">{{'navbar-10' | translate}}</a></li>
+        </ul>
+      </li>
+
+      <li><a routerLink="/about-us" (click)="onNavLinkClick()">{{'navbar-11' | translate}}</a></li>
+      <li><a routerLink="/news" (click)="onNavLinkClick()">{{'navbar-12' | translate}}</a></li>
+      <li><a routerLink="/faq" (click)="onNavLinkClick()">{{'navbar-13' | translate}}</a></li>
+
+      <li class="mobile-buttons">
+        <button class="btn btn-primary mobile-btn" (click)="openLogin(); closeMenu()">{{'navbar-14' | translate}}</button>
+        <button class="btn btn-secondary mobile-btn" (click)="openRealAccount(); closeMenu()">{{'navbar-15' | translate}}</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="overlay" [class.active]="isMenuOpen" (click)="closeMenu()"></div>

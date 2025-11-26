@@ -1,0 +1,690 @@
+<div class="faq-page">
+  <!-- Background Elements -->
+  <div class="background-elements">
+    <div class="bg-grid"></div>
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-particle particle-1">❓</div>
+    <div class="bg-particle particle-2">💬</div>
+    <div class="bg-particle particle-3">🔍</div>
+    <div class="bg-particle particle-4">📞</div>
+    <div class="bg-line line-1"></div>
+    <div class="bg-line line-2"></div>
+    <div class="floating-icon icon-1">💡</div>
+    <div class="floating-icon icon-2">🤝</div>
+    <div class="floating-icon icon-3">⚡</div>
+    <div class="floating-icon icon-4">🛡️</div>
+  </div>
+
+  <div class="faq-container">
+    <!-- Header Section -->
+    <div class="faq-header">
+      <h1 class="faq-title">{{'faq01-01'|translate}}</h1>
+      <p class="faq-subtitle">{{'faq01-02'|translate}}</p>
+      
+      <!-- Filtros de Categoria -->
+      <div class="faq-filters">
+        <button 
+          class="filter-btn"
+          [class.active]="selectedCategory === 'all'"
+          (click)="filterByCategory('all')">
+          <span class="filter-icon"></span>
+          {{'faq.filter.all'|translate}}
+        </button>
+        <button 
+          class="filter-btn"
+          [class.active]="selectedCategory === 'account'"
+          (click)="filterByCategory('account')">
+          <span class="filter-icon"></span>
+          {{'faq.filter.account'|translate}}
+        </button>
+        <button 
+          class="filter-btn"
+          [class.active]="selectedCategory === 'trading'"
+          (click)="filterByCategory('trading')">
+          <span class="filter-icon"></span>
+          {{'faq.filter.trading'|translate}}
+        </button>
+        <button 
+          class="filter-btn"
+          [class.active]="selectedCategory === 'deposits'"
+          (click)="filterByCategory('deposits')">
+          <span class="filter-icon"></span>
+          {{'faq.filter.deposits'|translate}}
+        </button>
+        <button 
+          class="filter-btn"
+          [class.active]="selectedCategory === 'withdrawals'"
+          (click)="filterByCategory('withdrawals')">
+          <span class="filter-icon"></span>
+          {{'faq.filter.withdrawals'|translate}}
+        </button>
+        <button 
+          class="filter-btn"
+          [class.active]="selectedCategory === 'fees'"
+          (click)="filterByCategory('fees')">
+          <span class="filter-icon"></span>
+          {{'faq.filter.fees'|translate}}
+        </button>
+        <button 
+          class="filter-btn"
+          [class.active]="selectedCategory === 'platform'"
+          (click)="filterByCategory('platform')">
+          <span class="filter-icon"></span>
+          {{'faq.filter.platform'|translate}}
+        </button>
+        <button 
+          class="filter-btn"
+          [class.active]="selectedCategory === 'security'"
+          (click)="filterByCategory('security')">
+          <span class="filter-icon"></span>
+          {{'faq.filter.security'|translate}}
+        </button>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-section">
+        <div class="search-container">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            class="search-input"
+            [placeholder]="'faq01-03'|translate"
+            [(ngModel)]="searchTerm"
+            (input)="filterFAQs()">
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Content -->
+    <div class="faq-content">
+      <!-- Results Counter -->
+      <div class="results-info" *ngIf="hasVisibleFAQs()">
+        <div class="results-badge">
+          <span class="results-count">{{ getVisibleFAQsCount() }}</span>
+          <span class="results-text">{{'faq01-04'|translate}}</span>
+        </div>
+      </div>
+
+      <!-- FAQ List -->
+      <div class="faq-list">
+        <!-- FAQ 1 - Conta -->
+        <div class="faq-item" [class.active]="faq1Open" (click)="faq1Open = !faq1Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.01'|translate}}</h3>
+            <span class="toggle-icon">{{ faq1Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq1Open">
+            <p class="answer-text">{{'faq.answer.01'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.01.01'|translate}}</li>
+                <li>{{'faq.info.01.02'|translate}}</li>
+                <li>{{'faq.info.01.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.account'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 15/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 2 - Conta -->
+        <div class="faq-item" [class.active]="faq2Open" (click)="faq2Open = !faq2Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.02'|translate}}</h3>
+            <span class="toggle-icon">{{ faq2Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq2Open">
+            <p class="answer-text">{{'faq.answer.02'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.02.01'|translate}}</li>
+                <li>{{'faq.info.02.02'|translate}}</li>
+                <li>{{'faq.info.02.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.account'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 10/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 3 - Depósitos -->
+        <div class="faq-item" [class.active]="faq3Open" (click)="faq3Open = !faq3Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.03'|translate}}</h3>
+            <span class="toggle-icon">{{ faq3Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq3Open">
+            <p class="answer-text">{{'faq.answer.03'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.03.01'|translate}}</li>
+                <li>{{'faq.info.03.02'|translate}}</li>
+                <li>{{'faq.info.03.03'|translate}}</li>
+                <li>{{'faq.info.03.04'|translate}}</li>
+              </ul>
+            </div>
+            <div class="contact-info">
+              <p><strong>{{'faq01-06'|translate}}</strong> {{'faq.contact.03'|translate}}</p>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.deposits'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 12/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 4 - Saques -->
+        <div class="faq-item" [class.active]="faq4Open" (click)="faq4Open = !faq4Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.04'|translate}}</h3>
+            <span class="toggle-icon">{{ faq4Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq4Open">
+            <p class="answer-text">{{'faq.answer.04'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.04.01'|translate}}</li>
+                <li>{{'faq.info.04.02'|translate}}</li>
+                <li>{{'faq.info.04.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.withdrawals'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 08/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 5 - Plataforma -->
+        <div class="faq-item" [class.active]="faq5Open" (click)="faq5Open = !faq5Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.05'|translate}}</h3>
+            <span class="toggle-icon">{{ faq5Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq5Open">
+            <p class="answer-text">{{'faq.answer.05'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.05.01'|translate}}</li>
+                <li>{{'faq.info.05.02'|translate}}</li>
+                <li>{{'faq.info.05.03'|translate}}</li>
+                <li>{{'faq.info.05.04'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.platform'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 20/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 6 - Trading -->
+        <div class="faq-item" [class.active]="faq6Open" (click)="faq6Open = !faq6Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.06'|translate}}</h3>
+            <span class="toggle-icon">{{ faq6Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq6Open">
+            <p class="answer-text">{{'faq.answer.06'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.06.01'|translate}}</li>
+                <li>{{'faq.info.06.02'|translate}}</li>
+                <li>{{'faq.info.06.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.trading'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 05/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 7 - Taxas -->
+        <div class="faq-item" [class.active]="faq7Open" (click)="faq7Open = !faq7Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.07'|translate}}</h3>
+            <span class="toggle-icon">{{ faq7Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq7Open">
+            <p class="answer-text">{{'faq.answer.07'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.07.01'|translate}}</li>
+                <li>{{'faq.info.07.02'|translate}}</li>
+                <li>{{'faq.info.07.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.fees'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 18/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 8 - Segurança -->
+        <div class="faq-item" [class.active]="faq8Open" (click)="faq8Open = !faq8Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.08'|translate}}</h3>
+            <span class="toggle-icon">{{ faq8Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq8Open">
+            <p class="answer-text">{{'faq.answer.08'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.08.01'|translate}}</li>
+                <li>{{'faq.info.08.02'|translate}}</li>
+                <li>{{'faq.info.08.03'|translate}}</li>
+              </ul>
+            </div>
+            <div class="contact-info">
+              <p><strong>{{'faq01-06'|translate}}</strong> {{'faq.contact.08'|translate}}</p>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.security'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 22/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 9 - Trading -->
+        <div class="faq-item" [class.active]="faq9Open" (click)="faq9Open = !faq9Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.09'|translate}}</h3>
+            <span class="toggle-icon">{{ faq9Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq9Open">
+            <p class="answer-text">{{'faq.answer.09'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.09.01'|translate}}</li>
+                <li>{{'faq.info.09.02'|translate}}</li>
+                <li>{{'faq.info.09.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.trading'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 14/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 10 - Conta -->
+        <div class="faq-item" [class.active]="faq10Open" (click)="faq10Open = !faq10Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.10'|translate}}</h3>
+            <span class="toggle-icon">{{ faq10Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq10Open">
+            <p class="answer-text">{{'faq.answer.10'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.10.01'|translate}}</li>
+                <li>{{'faq.info.10.02'|translate}}</li>
+                <li>{{'faq.info.10.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.account'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 09/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 11 - Trading -->
+        <div class="faq-item" [class.active]="faq11Open" (click)="faq11Open = !faq11Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.11'|translate}}</h3>
+            <span class="toggle-icon">{{ faq11Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq11Open">
+            <p class="answer-text">{{'faq.answer.11'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.11.01'|translate}}</li>
+                <li>{{'faq.info.11.02'|translate}}</li>
+                <li>{{'faq.info.11.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.trading'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 25/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 12 - Plataforma -->
+        <div class="faq-item" [class.active]="faq12Open" (click)="faq12Open = !faq12Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.12'|translate}}</h3>
+            <span class="toggle-icon">{{ faq12Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq12Open">
+            <p class="answer-text">{{'faq.answer.12'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.12.01'|translate}}</li>
+                <li>{{'faq.info.12.02'|translate}}</li>
+                <li>{{'faq.info.12.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.platform'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 28/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 13 - Depósitos -->
+        <div class="faq-item" [class.active]="faq13Open" (click)="faq13Open = !faq13Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.13'|translate}}</h3>
+            <span class="toggle-icon">{{ faq13Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq13Open">
+            <p class="answer-text">{{'faq.answer.13'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.13.01'|translate}}</li>
+                <li>{{'faq.info.13.02'|translate}}</li>
+                <li>{{'faq.info.13.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.deposits'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 30/01/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 14 - Saques -->
+        <div class="faq-item" [class.active]="faq14Open" (click)="faq14Open = !faq14Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.14'|translate}}</h3>
+            <span class="toggle-icon">{{ faq14Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq14Open">
+            <p class="answer-text">{{'faq.answer.14'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.14.01'|translate}}</li>
+                <li>{{'faq.info.14.02'|translate}}</li>
+                <li>{{'faq.info.14.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.withdrawals'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 02/02/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 15 - Taxas -->
+        <div class="faq-item" [class.active]="faq15Open" (click)="faq15Open = !faq15Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.15'|translate}}</h3>
+            <span class="toggle-icon">{{ faq15Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq15Open">
+            <p class="answer-text">{{'faq.answer.15'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.15.01'|translate}}</li>
+                <li>{{'faq.info.15.02'|translate}}</li>
+                <li>{{'faq.info.15.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.fees'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 05/02/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 16 - Segurança -->
+        <div class="faq-item" [class.active]="faq16Open" (click)="faq16Open = !faq16Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.16'|translate}}</h3>
+            <span class="toggle-icon">{{ faq16Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq16Open">
+            <p class="answer-text">{{'faq.answer.16'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.16.01'|translate}}</li>
+                <li>{{'faq.info.16.02'|translate}}</li>
+                <li>{{'faq.info.16.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.security'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 08/02/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 17 - Conta -->
+        <div class="faq-item" [class.active]="faq17Open" (click)="faq17Open = !faq17Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.17'|translate}}</h3>
+            <span class="toggle-icon">{{ faq17Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq17Open">
+            <p class="answer-text">{{'faq.answer.17'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.17.01'|translate}}</li>
+                <li>{{'faq.info.17.02'|translate}}</li>
+                <li>{{'faq.info.17.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.account'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 12/02/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 18 - Trading -->
+        <div class="faq-item" [class.active]="faq18Open" (click)="faq18Open = !faq18Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.18'|translate}}</h3>
+            <span class="toggle-icon">{{ faq18Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq18Open">
+            <p class="answer-text">{{'faq.answer.18'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.18.01'|translate}}</li>
+                <li>{{'faq.info.18.02'|translate}}</li>
+                <li>{{'faq.info.18.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.trading'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 15/02/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 19 - Plataforma -->
+        <div class="faq-item" [class.active]="faq19Open" (click)="faq19Open = !faq19Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.19'|translate}}</h3>
+            <span class="toggle-icon">{{ faq19Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq19Open">
+            <p class="answer-text">{{'faq.answer.19'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.19.01'|translate}}</li>
+                <li>{{'faq.info.19.02'|translate}}</li>
+                <li>{{'faq.info.19.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.platform'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 18/02/2024</span>
+          </div>
+        </div>
+
+        <!-- FAQ 20 - Segurança -->
+        <div class="faq-item" [class.active]="faq20Open" (click)="faq20Open = !faq20Open">
+          <div class="faq-question">
+            <div class="question-icon"></div>
+            <h3 class="question-text">{{'faq.question.20'|translate}}</h3>
+            <span class="toggle-icon">{{ faq20Open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq20Open">
+            <p class="answer-text">{{'faq.answer.20'|translate}}</p>
+            <div class="additional-info">
+              <h4>{{'faq01-05'|translate}}</h4>
+              <ul>
+                <li>{{'faq.info.20.01'|translate}}</li>
+                <li>{{'faq.info.20.02'|translate}}</li>
+                <li>{{'faq.info.20.03'|translate}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-meta">
+            <span class="faq-category"><span class="category-icon"></span>{{'faq.filter.security'|translate}}</span>
+            <span class="faq-date"><span class="date-icon"></span>{{'faq01-07'|translate}} 20/02/2024</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" *ngIf="!hasVisibleFAQs()">
+        <div class="empty-icon"></div>
+        <h3>{{'faq01-08'|translate}}</h3>
+        <p>{{'faq01-09'|translate}}</p>
+        <button class="reset-btn" (click)="resetFilters()">
+          <span class="btn-icon"></span>
+          {{'faq01-10'|translate}}
+        </button>
+      </div>
+    </div>
+
+    <!-- Support Cards -->
+    <div class="support-cards">
+      <div class="support-card">
+        <div class="support-icon"></div>
+        <h4>{{'faq01-11'|translate}}</h4>
+        <p>{{'faq01-12'|translate}}</p>
+        <button class="support-card-btn" (click)="openHelpCenter()">{{'faq01-13'|translate}}</button>
+      </div>
+      
+      <div class="support-card">
+        <div class="support-icon"></div>
+        <h4>{{'faq01-14'|translate}}</h4>
+        <p>{{'faq01-15'|translate}}</p>
+        <button class="support-card-btn" (click)="openVideos()">{{'faq01-16'|translate}}</button>
+      </div>
+      
+      <div class="support-card">
+        <div class="support-icon"></div>
+        <h4>{{'faq01-17'|translate}}</h4>
+        <p>{{'faq01-18'|translate}}</p>
+        <button class="support-card-btn" (click)="openDocumentation()">{{'faq01-19'|translate}}</button>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+      <div class="contact-card">
+        <div class="contact-header">
+          <div class="contact-icon"></div>
+          <div class="contact-title">
+            <h3>{{'faq01-20'|translate}}</h3>
+            <p>{{'faq01-21'|translate}}</p>
+          </div>
+        </div>
+        
+        <div class="contact-methods">
+          <div class="contact-method" (click)="openChat()">
+            <span class="method-icon"></span>
+            <div class="method-info">
+              <strong>{{'faq01-22'|translate}}</strong>
+              <span>{{'faq01-23'|translate}}</span>
+              <span class="method-badge">{{'faq01-24'|translate}}</span>
+            </div>
+          </div>
+          
+          <div class="contact-method" (click)="openPhone()">
+            <span class="method-icon"></span>
+            <div class="method-info">
+              <strong>{{'faq01-25'|translate}}</strong>
+              <span>+55 (11) 4004-2000</span>
+              <span class="method-badge">{{'faq01-26'|translate}}</span>
+            </div>
+          </div>
+          
+          <div class="contact-method" (click)="openEmail()">
+            <span class="method-icon"></span>
+            <div class="method-info">
+              <strong>{{'faq01-27'|translate}}</strong>
+              <span>suporte@corretora.com</span>
+              <span class="method-badge">{{'faq01-28'|translate}}</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-actions">
+          <button class="contact-btn primary" (click)="openChat()">
+            <span class="btn-icon"></span>
+            {{'faq01-29'|translate}}
+          </button>
+          <button class="contact-btn secondary" (click)="openTicket()">
+            <span class="btn-icon"></span>
+            {{'faq01-30'|translate}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

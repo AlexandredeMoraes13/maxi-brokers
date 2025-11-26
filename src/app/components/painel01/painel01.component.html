@@ -1,0 +1,50 @@
+<section class="hero-section">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="title-line">
+          {{'painel01-01'|translate}}</span>
+        <span class="title-line">{{'painel01-02'|translate}}</span>
+      </h1>
+
+      <p class="hero-description">
+        {{'painel01-03'|translate}}
+      </p>
+
+      <div class="hero-buttons">
+        <button class="btn btn-primary" (click)="startInvesting()">
+          {{'painel01-04'|translate}}
+        </button>
+        <button class="btn btn-secondary" (click)="discoverWeb3()">
+          {{'painel01-05'|translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Elementos para o background de trading -->
+  <div class="trading-background">
+    <div class="chart-grid"></div>
+
+    <!-- Ativos do mercado financeiro -->
+    <div *ngFor="let asset of assets" class="asset-ticker" [ngStyle]="getAssetStyle(asset)"
+      [class.positive]="asset.change > 0" [class.negative]="asset.change < 0">
+      {{asset.symbol}} {{asset.change > 0 ? '+' : ''}}{{asset.change}}%
+    </div>
+
+    <div class="candle-stick candle-1"></div>
+    <div class="candle-stick candle-2"></div>
+    <div class="candle-stick candle-3"></div>
+    <div class="candle-stick candle-4"></div>
+    <div class="candle-stick candle-5"></div>
+    <div class="trend-line trend-1"></div>
+    <div class="trend-line trend-2"></div>
+    <div class="price-level level-1"></div>
+    <div class="price-level level-2"></div>
+    <div class="market-pulse"></div>
+    <div class="financial-particle particle-1">$</div>
+    <div class="financial-particle particle-2">₿</div>
+    <div class="financial-particle particle-3">€</div>
+    <div class="financial-particle particle-4">¥</div>
+  </div>
+</section>

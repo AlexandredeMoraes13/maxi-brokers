@@ -1,0 +1,92 @@
+<!-- painel03.component.html -->
+<section class="asset-universe-section">
+  <div class="asset-container">
+    <div class="asset-header">
+      <h2 class="asset-title">{{'painel03-01'|translate}}</h2>
+      <p class="asset-subtitle">{{'painel03-02'|translate}}</p>
+    </div>
+
+    <!-- Botões hero-buttons adicionados aqui -->
+    
+
+    <div class="box">
+      <div class="metrics-section">
+        <div class="metrics-row">
+          <div class="metric-item">
+            <span class="metric-value">{{ metrics.avgSpread }}%</span>
+            <span class="metric-label">{{'painel03-04'|translate}}</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">{{ metrics.avgFee }}%</span>
+            <span class="metric-label">{{'painel03-05'|translate}}</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">{{ metrics.executionSpeed }}%</span>
+            <span class="metric-label">{{'painel03-06'|translate}}</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">{{ metrics.liquidity }}%</span>
+            <span class="metric-label">{{'painel03-07'|translate}}</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">{{ metrics.avgReturn }}%</span>
+            <span class="metric-label">{{'painel03-08'|translate}}</span>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <!-- Assets em linha horizontal com dados dinâmicos -->
+      <div class="assets-horizontal">
+        <div 
+          *ngFor="let asset of assets" 
+          class="asset-card-horizontal"
+          [class.updating]="asset.isUpdating">
+          
+          <div class="asset-icon">
+            <img class="img-actives" [src]="asset.imageUrl" [alt]="asset.name">
+          </div>
+          
+          <div class="asset-info">
+            <h3 class="asset-name">{{ asset.name }}</h3>
+            <div class="asset-price">{{ formatPrice(asset.price) }}</div>
+            <div class="asset-symbol">{{ asset.symbol }}</div>
+          </div>
+          
+          <div 
+            class="asset-change" 
+            [class.positive]="asset.changePercent >= 0"
+            [class.negative]="asset.changePercent < 0">
+            {{ formatChange(asset.changePercent) }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div class="global-access">
+      <span>{{'painel03-09'|translate}}</span>
+    </div>
+
+    <div class="hero-buttons">
+      <button class="btn btn-primary" (click)="startInvesting()">
+        {{'painel01-04'|translate}}
+      </button>
+      
+    </div>
+
+  </div>
+
+  
+
+  <!-- Background elements simplificados -->
+  <div class="universe-background">
+    <div class="bg-grid-universe"></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+  </div>
+
+  
+</section>

@@ -1,0 +1,388 @@
+<section class="assets-section">
+  <div class="assets-container">
+    <!-- Header Section -->
+    <div class="assets-header">
+      <h1 class="assets-title">
+        {{ isOverview() ? ('market-01' | translate) : (getCurrentAssetTitle() | translate) }}
+      </h1>
+      <p class="assets-subtitle" *ngIf="isOverview()">
+        {{ 'market-02' | translate }}
+      </p>
+      <p class="assets-subtitle" *ngIf="!isOverview()">
+        {{ getCurrentAssetDescription() | translate }}
+      </p>
+
+      <!-- Botão voltar quando estiver em um ativo específico -->
+      <button *ngIf="!isOverview()" class="back-button" (click)="backToOverview()">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        {{ 'market-03' | translate }}
+      </button>
+    </div>
+
+    <!-- Conteúdo da Visão Geral -->
+    <div *ngIf="isOverview()" class="assets-content">
+      <!-- Left Side - Asset Categories -->
+      <div class="assets-grid">
+        <!-- Forex Card -->
+        <div class="asset-card" data-aos="fade-up" data-aos-delay="100" (click)="navigateToAsset('forex')">
+          <div class="asset-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                stroke="currentColor" stroke-width="2" />
+              <path d="M7 12H17" stroke="currentColor" stroke-width="2" />
+              <path d="M12 7V17" stroke="currentColor" stroke-width="2" />
+              <path d="M15 9L17 12L15 15" stroke="currentColor" stroke-width="2" />
+              <path d="M9 9L7 12L9 15" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="asset-content">
+            <h3 class="asset-title">{{ 'market-04' | translate }}</h3>
+            <p class="asset-description">
+              {{ 'market-05' | translate }}
+            </p>
+            <div class="asset-stats">
+              <div class="stat">
+                <span class="stat-value">60+</span>
+                <span class="stat-label">{{ 'market-06' | translate }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">24/5</span>
+                <span class="stat-label">{{ 'market-07' | translate }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">0.0</span>
+                <span class="stat-label">{{ 'market-08' | translate }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="asset-hover-effect"></div>
+        </div>
+
+        <!-- Índices Card -->
+        <div class="asset-card" data-aos="fade-up" data-aos-delay="200" (click)="navigateToAsset('indices')">
+          <div class="asset-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 3V21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M7 14L10 10L13 13L17 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M17 12H17.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="asset-content">
+            <h3 class="asset-title">{{ 'market-09' | translate }}</h3>
+            <p class="asset-description">
+              {{ 'market-10' | translate }}
+            </p>
+            <div class="asset-stats">
+              <div class="stat">
+                <span class="stat-value">25+</span>
+                <span class="stat-label">{{ 'market-11' | translate }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">0.4</span>
+                <span class="stat-label">{{ 'market-12' | translate }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">95%</span>
+                <span class="stat-label">{{ 'market-13' | translate }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="asset-hover-effect"></div>
+        </div>
+
+        <!-- Ações Card -->
+        <div class="asset-card" data-aos="fade-up" data-aos-delay="300" (click)="navigateToAsset('acoes')">
+          <div class="asset-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              <path d="M12 17V7" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="asset-content">
+            <h3 class="asset-title">{{ 'market-14' | translate }}</h3>
+            <p class="asset-description">
+              {{ 'market-15' | translate }}
+            </p>
+            <div class="asset-stats">
+              <div class="stat">
+                <span class="stat-value">2K+</span>
+                <span class="stat-label">{{ 'market-16' | translate }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">0%</span>
+                <span class="stat-label">{{ 'market-17' | translate }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">9</span>
+                <span class="stat-label">{{ 'market-18' | translate }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="asset-hover-effect"></div>
+        </div>
+
+        <!-- Commodities Card -->
+        <div class="asset-card" data-aos="fade-up" data-aos-delay="400" (click)="navigateToAsset('commodities')">
+          <div class="asset-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M8 8V18" stroke="currentColor" stroke-width="2" />
+              <path d="M16 8V18" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="asset-content">
+            <h3 class="asset-title">{{ 'market-19' | translate }}</h3>
+            <p class="asset-description">
+              {{ 'market-20' | translate }}
+            </p>
+            <div class="asset-stats">
+              <div class="stat">
+                <span class="stat-value">30+</span>
+                <span class="stat-label">{{ 'market-21' | translate }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">24/5</span>
+                <span class="stat-label">{{ 'market-22' | translate }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">0.05</span>
+                <span class="stat-label">{{ 'market-23' | translate }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="asset-hover-effect"></div>
+        </div>
+
+        <!-- Cripto Card -->
+        <div class="asset-card" data-aos="fade-up" data-aos-delay="500" (click)="navigateToAsset('cripto')">
+          <div class="asset-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 6V4C17 2.89543 17.8954 2 19 2H20" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" />
+              <path d="M17 18V20C17 21.1046 17.8954 22 19 22H20" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" />
+              <path d="M7 6V4C7 2.89543 6.10457 2 5 2H4" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" />
+              <path d="M7 18V20C7 21.1046 6.10457 22 5 22H4" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" />
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" />
+              <path d="M17 12H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M4 12H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M12 17V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M12 4V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="asset-content">
+            <h3 class="asset-title">{{ 'market-24' | translate }}</h3>
+            <p class="asset-description">
+              {{ 'market-25' | translate }}
+            </p>
+            <div class="asset-stats">
+              <div class="stat">
+                <span class="stat-value">150+</span>
+                <span class="stat-label">{{ 'market-26' | translate }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">24/7</span>
+                <span class="stat-label">{{ 'market-27' | translate }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">0.1%</span>
+                <span class="stat-label">{{ 'market-28' | translate }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="asset-hover-effect"></div>
+        </div>
+      </div>
+
+      <!-- Right Side - Market Overview -->
+      <div class="market-overview" data-aos="fade-left" data-aos-delay="600">
+        <div class="overview-card">
+          <div class="overview-header">
+            <h3 class="overview-title">{{ 'market-29' | translate }}</h3>
+            <div class="market-status">
+              <div class="status-indicator"></div>
+              <span class="status-text">{{ 'market-30' | translate }}</span>
+            </div>
+          </div>
+
+          <!-- Market Metrics -->
+          <div class="market-metrics">
+            <div class="metric-row">
+              <span class="metric-label">{{ 'market-31' | translate }}</span>
+              <span class="metric-value">{{ totalVolume | number:'1.0-0' }}</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">{{ 'market-32' | translate }}</span>
+              <span class="metric-value">{{ availableAssets | number:'1.0-0' }}</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">{{ 'market-33' | translate }}</span>
+              <span class="metric-value">{{ countriesCount }}</span>
+            </div>
+          </div>
+
+          <!-- Live Tickers -->
+          <div class="live-tickers">
+            <h4 class="tickers-title">{{ 'market-34' | translate }}</h4>
+            <div class="ticker-list">
+              <div class="ticker-item" *ngFor="let ticker of liveTickers">
+                <span class="ticker-symbol">{{ ticker.symbol }}</span>
+                <span class="ticker-price" [class.positive]="ticker.change > 0" [class.negative]="ticker.change < 0">
+                  {{ ticker.price | number:'1.2-2' }}
+                </span>
+                <span class="ticker-change" [class.positive]="ticker.change > 0" [class.negative]="ticker.change < 0">
+                  {{ ticker.change > 0 ? '+' : '' }}{{ ticker.change | number:'1.2-2' }}%
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trading Hours -->
+          <div class="trading-hours">
+            <h4 class="hours-title">{{ 'market-35' | translate }}</h4>
+            <div class="hours-list">
+              <div class="hour-item">
+                <span class="hour-market">{{ 'market-36' | translate }}</span>
+                <span class="hour-time">{{ 'market-37' | translate }}</span>
+              </div>
+              <div class="hour-item">
+                <span class="hour-market">{{ 'market-38' | translate }}</span>
+                <span class="hour-time">{{ 'market-39' | translate }}</span>
+              </div>
+              <div class="hour-item">
+                <span class="hour-market">{{ 'market-40' | translate }}</span>
+                <span class="hour-time">{{ 'market-41' | translate }}</span>
+              </div>
+              <div class="hour-item">
+                <span class="hour-market">{{ 'market-42' | translate }}</span>
+                <span class="hour-time">{{ 'market-43' | translate }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conteúdo do Ativo Específico -->
+    <div *ngIf="!isOverview() && isValidAsset()" class="asset-detail-content">
+      <div class="asset-detail-grid">
+        <!-- Left Side - Asset Information -->
+        <div class="asset-detail-main">
+          <div class="detail-card">
+            <h3 class="detail-title">{{ 'market-44' | translate }}</h3>
+            <div class="features-list">
+              <div class="feature-item" *ngFor="let feature of getCurrentAssetFeatures()">
+                <div class="feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <span class="feature-text">{{ feature | translate }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Popular Items -->
+          <div class="detail-card">
+            <h3 class="detail-title">
+              {{ getCurrentAssetTitle() === 'market-09' ? ('market-45' | translate) :
+              getCurrentAssetTitle() === 'market-14' ? ('market-46' | translate) :
+              getCurrentAssetTitle() === 'market-19' ? ('market-47' | translate) :
+              getCurrentAssetTitle() === 'market-24' ? ('market-48' | translate) :
+              ('market-45' | translate) }}
+            </h3>
+            <div class="popular-items">
+              <div class="popular-item" *ngFor="let item of getCurrentAssetPopularItems()">
+                <div class="item-info">
+                  <span class="item-symbol">{{ item.symbol }}</span>
+                  <span class="item-name" *ngIf="item.name">{{ item.name | translate }}</span>
+                </div>
+                <div class="item-price">
+                  <span class="price">{{ item.price }}</span>
+                  <span class="change" [class.positive]="item.change?.includes('+')"
+                    [class.negative]="item.change?.includes('-')">
+                    {{ item.change }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side - Stats & Info -->
+        <div class="asset-detail-sidebar">
+          <div class="stats-card">
+            <h4 class="stats-title">{{ 'market-42' | translate }}</h4>
+            <div class="stats-list">
+              <div class="stat-item">
+                <span class="stat-label">{{ 'market-49' | translate }}</span>
+                <span class="stat-value">{{ getCurrentAssetStats().volume | translate }}</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">{{ 'market-50' | translate }}</span>
+                <span class="stat-value">{{ getCurrentAssetStats().horario | translate }}</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">{{ 'market-51' | translate }}</span>
+                <span class="stat-value">{{ getCurrentAssetStats().alavancagem | translate }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h4 class="info-title">{{ 'market-52' | translate }}</h4>
+            <p class="info-description">
+              {{ getCurrentAssetDescription() | translate }} {{ 'market-53' | translate }}
+            </p>
+            <button class="trade-button" (click)="backToOverview()">
+              {{ 'market-54' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background Elements Dinâmico -->
+    <div class="dynamic-background" [style]="getBackgroundStyle()">
+      <!-- Grid Interativo -->
+      <div class="interactive-grid"></div>
+
+      <!-- Partículas Dinâmicas -->
+      <div class="particles-container">
+        <div *ngFor="let particle of particles; let i = index" class="particle" [class]="'particle-' + particle.type"
+          [style]="getParticleStyle(particle, i)">
+        </div>
+      </div>
+
+      <!-- Ondas de Fundo -->
+      <div class="wave-layer wave-1" [style.background]="getWaveGradient(0.1)"></div>
+      <div class="wave-layer wave-2" [style.background]="getWaveGradient(0.05)"></div>
+      <div class="wave-layer wave-3" [style.background]="getWaveGradient(0.02)"></div>
+
+      <!-- Efeito de Respiração -->
+      <div class="breathing-orb" [style.background]="getOrbGradient()"></div>
+
+      <!-- Linhas de Conexão -->
+      <div class="connection-lines">
+        <div class="line" *ngFor="let line of [1,2,3,4,5,6]"></div>
+      </div>
+
+      <!-- Efeito de Partículas Específicas por Ativo -->
+      <div *ngIf="!isOverview()" class="asset-specific-particles">
+        <div class="asset-particle" *ngFor="let ap of [1,2,3,4,5,6]"></div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,209 @@
+<section class="trading-section">
+  <div class="trading-container">
+    <!-- Header Section -->
+    <div class="trading-header">
+      <h1 class="trading-title">{{'painel05-01'|translate}}</h1>
+      <p class="trading-subtitle">{{'painel05-02'|translate}}</p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="trading-content">
+      <!-- Left Side - Trading Pairs -->
+      <div class="trading-pairs">
+        <!-- Trading Pair 1 -->
+        <div class="pair-card" data-aos="fade-right" data-aos-delay="100">
+          <div class="pair-header">
+            <div class="pair-info">
+              <span class="pair-symbol">A. CHINI-LAGE</span>
+              <span class="pair-change positive">+2.34%</span>
+            </div>
+          </div>
+          <div class="pair-price">41,450.00</div>
+          <div class="pair-volume">{{'painel05-03'|translate}}: $2.5M</div>
+          <div class="pair-chart-mini">
+            <div class="mini-chart">
+              <div class="chart-bar" style="height: 30%"></div>
+              <div class="chart-bar" style="height: 60%"></div>
+              <div class="chart-bar" style="height: 45%"></div>
+              <div class="chart-bar" style="height: 80%"></div>
+              <div class="chart-bar" style="height: 55%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trading Pair 2 -->
+        <div class="pair-card" data-aos="fade-right" data-aos-delay="200">
+          <div class="pair-header">
+            <div class="pair-info">
+              <span class="pair-symbol">BX, D&D</span>
+              <span class="pair-change negative">-1.25%</span>
+            </div>
+          </div>
+          <div class="pair-price">675,569.00</div>
+          <div class="pair-volume">{{'painel05-03'|translate}}: $1.8M</div>
+          <div class="pair-chart-mini">
+            <div class="mini-chart">
+              <div class="chart-bar" style="height: 70%"></div>
+              <div class="chart-bar" style="height: 45%"></div>
+              <div class="chart-bar" style="height: 60%"></div>
+              <div class="chart-bar" style="height: 35%"></div>
+              <div class="chart-bar" style="height: 50%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trading Pair 3 -->
+        <div class="pair-card" data-aos="fade-right" data-aos-delay="300">
+          <div class="pair-header">
+            <div class="pair-info">
+              <span class="pair-symbol">TORNECOGI</span>
+              <span class="pair-change positive">+0.89%</span>
+            </div>
+          </div>
+          <div class="pair-price">892.34</div>
+          <div class="pair-volume">{{'painel05-03'|translate}}: $3.2M</div>
+          <div class="pair-chart-mini">
+            <div class="mini-chart">
+              <div class="chart-bar" style="height: 50%"></div>
+              <div class="chart-bar" style="height: 65%"></div>
+              <div class="chart-bar" style="height: 40%"></div>
+              <div class="chart-bar" style="height: 75%"></div>
+              <div class="chart-bar" style="height: 55%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - Main Chart -->
+      <div class="chart-main" data-aos="fade-left" data-aos-delay="400">
+        <div class="chart-header">
+          <div class="chart-title">{{'painel05-04'|translate}}</div>
+          <div class="chart-controls">
+            <button class="time-btn active">1D</button>
+            <button class="time-btn">1W</button>
+            <button class="time-btn">1M</button>
+            <button class="time-btn">1Y</button>
+          </div>
+        </div>
+
+        <!-- Main Trading Chart -->
+        <div class="trading-chart">
+          <!-- Y-axis labels -->
+          <div class="y-axis">
+            <span>1000</span>
+            <span>2000</span>
+            <span>3000</span>
+            <span>4000</span>
+            <span>5000</span>
+          </div>
+
+          <!-- Chart Area -->
+          <div class="chart-area">
+            <!-- Grid Lines -->
+            <div class="chart-grid">
+              <div class="grid-line"></div>
+              <div class="grid-line"></div>
+              <div class="grid-line"></div>
+              <div class="grid-line"></div>
+              <div class="grid-line"></div>
+            </div>
+
+            <!-- Animated Chart Line -->
+            <svg class="chart-line" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path class="price-path"
+                d="M0,80 L10,60 L20,70 L30,45 L40,65 L50,35 L60,55 L70,25 L80,45 L90,30 L100,20" />
+            </svg>
+
+            <!-- Data Points -->
+            <div class="chart-points">
+              <div class="data-point" style="left: 0%; bottom: 80%"></div>
+              <div class="data-point" style="left: 10%; bottom: 60%"></div>
+              <div class="data-point" style="left: 20%; bottom: 70%"></div>
+              <div class="data-point" style="left: 30%; bottom: 45%"></div>
+              <div class="data-point" style="left: 40%; bottom: 65%"></div>
+              <div class="data-point" style="left: 50%; bottom: 35%"></div>
+              <div class="data-point" style="left: 60%; bottom: 55%"></div>
+              <div class="data-point" style="left: 70%; bottom: 25%"></div>
+              <div class="data-point" style="left: 80%; bottom: 45%"></div>
+              <div class="data-point" style="left: 90%; bottom: 30%"></div>
+              <div class="data-point" style="left: 100%; bottom: 20%"></div>
+            </div>
+          </div>
+
+          <!-- X-axis labels -->
+          <div class="x-axis">
+            <span>2007</span>
+            <span>2009</span>
+            <span>2011</span>
+            <span>2013</span>
+            <span>2015</span>
+            <span>2017</span>
+            <span>2019</span>
+            <span>2021</span>
+            <span>2023</span>
+          </div>
+        </div>
+
+        <!-- Chart Metrics -->
+        <div class="chart-metrics">
+          <div class="metric">
+            <span class="metric-label">{{'painel05-05'|translate}}</span>
+            <span class="metric-value">$4,250.75</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">{{'painel05-06'|translate}}</span>
+            <span class="metric-value positive">+2.34%</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">{{'painel05-07'|translate}}</span>
+            <span class="metric-value">$2.5B</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">{{'painel05-08'|translate}}</span>
+            <span class="metric-value">$45.2T</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trading Stats -->
+    <div class="trading-stats" data-aos="fade-up" data-aos-delay="500">
+      <div class="stat-item">
+        <span class="stat-value">{{ activeTraders | number:'1.0-0' }}</span>
+        <span class="stat-label">{{'painel05-09'|translate}}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">${{ dailyVolume | number:'1.2-2' }}B</span>
+        <span class="stat-label">{{'painel05-10'|translate}}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">{{ executionSpeed | number:'1.0-0' }}ms</span>
+        <span class="stat-label">{{'painel05-11'|translate}}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">{{ successRate | number:'1.2-2' }}%</span>
+        <span class="stat-label">{{'painel05-12'|translate}}</span>
+      </div>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="trading-background">
+      <div class="bg-orb orb-1"></div>
+      <div class="bg-orb orb-2"></div>
+      <div class="floating-elements">
+        <div class="floating-element" *ngFor="let element of floatingElements" [style.left.px]="element.x"
+          [style.top.px]="element.y" [style.animation-delay.s]="element.delay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SVG Definitions -->
+<svg style="position: absolute; width: 0; height: 0;">
+  <defs>
+    <linearGradient id="priceGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0.1" />
+    </linearGradient>
+  </defs>
+</svg>
