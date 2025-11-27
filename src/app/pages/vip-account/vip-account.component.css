@@ -97,8 +97,9 @@
   gap: 30px;
 }
 
-.stardard-img{
+.maxi-img{
   width: 80%;
+  margin-bottom: 30px;
 }
 
 .pricing-column{
@@ -106,6 +107,7 @@
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
+ 
 }
 
 .features-card,
