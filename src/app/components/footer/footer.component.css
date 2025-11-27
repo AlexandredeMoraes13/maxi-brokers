@@ -9,6 +9,25 @@
   border-top: 1px solid rgba(255, 107, 53, 0.1);
 }
 
+.logo-navbar{
+  width: 20%;
+}
+
+.logo-nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+}
+
+.copy-logo{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -56,6 +75,7 @@
   letter-spacing: -0.5px;
   position: relative;
   z-index: 3;
+ 
 }
 
 .tech-glow {
@@ -71,16 +91,7 @@
   z-index: 1;
 }
 
-.circuit-lines {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border: 1px solid #FF6D1F;
-  border-radius: 8px;
-  animation: circuitPulse 3s ease-in-out infinite;
-}
+
 
 @keyframes techGlow {
   0%, 100% {
@@ -605,11 +616,11 @@
 }
 
 .footer-bottom-content {
-  display: flex;
-  justify-content: space-between;
+ display: flex;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 10px;
 }
 
 .copyright {
@@ -636,8 +647,10 @@
   text-decoration: none;
   font-size: 0.9rem;
   transition: all 0.3s ease;
-  position: relative;
   padding: 0.25rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .legal-link::after {

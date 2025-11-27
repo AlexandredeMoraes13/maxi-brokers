@@ -91,6 +91,19 @@
   margin-bottom: 80px;
 }
 
+.stardard-img{
+  width: 80%;
+  margin-bottom: 40px;
+}
+
+.pricing-column{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+
 /* Features Column */
 .features-column {
   display: flex;
@@ -245,7 +258,9 @@
   padding: 32px;
   position: sticky;
   top: 100px;
+  
 }
+
 
 .pricing-header {
   text-align: center;

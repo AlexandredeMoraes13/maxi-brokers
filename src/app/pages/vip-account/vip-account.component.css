@@ -97,6 +97,17 @@
   gap: 30px;
 }
 
+.stardard-img{
+  width: 80%;
+}
+
+.pricing-column{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
 .features-card,
 .specs-card,
 .services-card {

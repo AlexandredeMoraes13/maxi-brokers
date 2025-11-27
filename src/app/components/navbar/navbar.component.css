@@ -9,6 +9,11 @@ body {
   position: relative;
 }
 
+.logo-navbar{
+  width: 100%;
+
+}
+
 .hero-buttons{
   display: flex;
   gap: 1rem;
