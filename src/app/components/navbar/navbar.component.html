@@ -5,22 +5,27 @@
 
       <div class="col-4 col-xl-2">
         <h1 class="mb-0 site-logo">
-          <a routerLink="/" class="text-white mb-0" (click)="scrollToTop()"><img src="https://i.imgur.com/1o6ZEBu.png" alt="" class="logo-navbar"></a>
+          <a routerLink="/" class="text-white mb-0" (click)="scrollToTop()"><img src="https://i.imgur.com/1o6ZEBu.png"
+              alt="" class="logo-navbar"></a>
         </h1>
       </div>
 
       <div class="col-4 col-xl-7 d-none d-xl-block">
         <nav class="site-navigation">
           <ul class="site-menu">
-            <li class="active"><a routerLink="/" (click)="scrollToTop()"><span>{{'navbar-02' | translate}}</span></a></li>
-            
+            <li class="active"><a routerLink="/" (click)="scrollToTop()"><span>{{'navbar-02' | translate}}</span></a>
+            </li>
+
             <li class="has-children">
               <a><span>{{'navbar-03' | translate}}</span></a>
               <ul class="dropdown arrow-top">
                 <li><a routerLink="/account-types" (click)="scrollToTop()">{{'navbar-03' | translate}}</a></li>
-                <li><a routerLink="/account-types/standard-account" (click)="scrollToTop()">{{'navbar-04' | translate}}</a></li>
-                <li><a routerLink="/account-types/premium-account" (click)="scrollToTop()">{{'navbar-05' | translate}}</a></li>
-                <li><a routerLink="/account-types/vip-account" (click)="scrollToTop()">{{'navbar-06' | translate}}</a></li>
+                <li><a routerLink="/account-types/standard-account" (click)="scrollToTop()">{{'navbar-04' |
+                    translate}}</a></li>
+                <li><a routerLink="/account-types/premium-account" (click)="scrollToTop()">{{'navbar-05' |
+                    translate}}</a></li>
+                <li><a routerLink="/account-types/vip-account" (click)="scrollToTop()">{{'navbar-06' | translate}}</a>
+                </li>
               </ul>
             </li>
 
@@ -41,7 +46,8 @@
               <ul class="dropdown arrow-top">
                 <li><a routerLink="/how-it-works" (click)="scrollToTop()">{{'navbar-07' | translate}}</a></li>
                 <li><a routerLink="/how-it-works/register" (click)="scrollToTop()">{{'navbar-08' | translate}}</a></li>
-                <li><a routerLink="/how-it-works/initial-deposit" (click)="scrollToTop()">{{'navbar-09' | translate}}</a></li>
+                <li><a routerLink="/how-it-works/initial-deposit" (click)="scrollToTop()">{{'navbar-09' |
+                    translate}}</a></li>
                 <li><a routerLink="/how-it-works/start" (click)="scrollToTop()">{{'navbar-10' | translate}}</a></li>
               </ul>
             </li>
@@ -56,12 +62,14 @@
       <div class="col-4 col-xl-3 d-none d-xl-block">
         <div class="navbar-right-content">
           <div class="language-selector-right">
-            <button class="language-btn-right" (click)="toggleLanguageDropdown()" [class.active]="isLanguageDropdownOpen">
+            <button class="language-btn-right" (click)="toggleLanguageDropdown()"
+              [class.active]="isLanguageDropdownOpen">
               <span class="language-code">{{ currentLanguage.code.toUpperCase() }}</span>
               <span class="dropdown-arrow">▾</span>
             </button>
             <div class="language-dropdown-right" [class.show]="isLanguageDropdownOpen">
-              <div *ngFor="let lang of languages" class="language-option-right" (click)="switchLanguage(lang.code)" [class.active]="currentLanguage.code === lang.code">
+              <div *ngFor="let lang of languages" class="language-option-right" (click)="switchLanguage(lang.code)"
+                [class.active]="currentLanguage.code === lang.code">
                 <span class="language-flag">{{ lang.flag }}</span>
                 <span class="language-name">{{ lang.name }}</span>
               </div>
@@ -69,8 +77,10 @@
           </div>
 
           <div class="hero-buttons">
-            <button class="btn btn-primary" (click)="openLogin()">{{'navbar-14' | translate}}</button>
-            <button class="btn btn-secondary" (click)="openRealAccount()">{{'navbar-15' | translate}}</button>
+            <a href="https://app.maxibrokers.com/user-registration"><button class="btn btn-primary"
+                (click)="openLogin()">{{'navbar-14' | translate}}</button></a>
+            <a href="https://app.maxibrokers.com"><button class="btn btn-secondary"
+                (click)="openRealAccount()">{{'navbar-15' | translate}}</button></a>
           </div>
         </div>
       </div>
@@ -116,17 +126,21 @@
       <li><a routerLink="/" (click)="onNavLinkClick()">{{'navbar-02' | translate}}</a></li>
 
       <li class="has-children">
-        <a href="#" (click)="toggleMobileDropdown($event)">{{'navbar-03' | translate}}<span class="mobile-dropdown-arrow">▾</span></a>
+        <a href="#" (click)="toggleMobileDropdown($event)">{{'navbar-03' | translate}}<span
+            class="mobile-dropdown-arrow">▾</span></a>
         <ul class="dropdown">
           <li><a routerLink="/account-types" (click)="onNavLinkClick()">{{'navbar-03' | translate}}</a></li>
-          <li><a routerLink="/account-types/standard-account" (click)="onNavLinkClick()">{{'navbar-04' | translate}}</a></li>
-          <li><a routerLink="/account-types/premium-account" (click)="onNavLinkClick()">{{'navbar-05' | translate}}</a></li>
+          <li><a routerLink="/account-types/standard-account" (click)="onNavLinkClick()">{{'navbar-04' | translate}}</a>
+          </li>
+          <li><a routerLink="/account-types/premium-account" (click)="onNavLinkClick()">{{'navbar-05' | translate}}</a>
+          </li>
           <li><a routerLink="/account-types/vip-account" (click)="onNavLinkClick()">{{'navbar-06' | translate}}</a></li>
         </ul>
       </li>
 
       <li class="has-children">
-        <a href="#" (click)="toggleMobileDropdown($event)">{{'navbar-16' | translate}}<span class="mobile-dropdown-arrow">▾</span></a>
+        <a href="#" (click)="toggleMobileDropdown($event)">{{'navbar-16' | translate}}<span
+            class="mobile-dropdown-arrow">▾</span></a>
         <ul class="dropdown">
           <li><a routerLink="/market" (click)="onNavLinkClick()">{{'navbar-16' | translate}}</a></li>
           <li><a routerLink="/market/forex" (click)="onNavLinkClick()">{{'market01-04' | translate}}</a></li>
@@ -138,11 +152,13 @@
       </li>
 
       <li class="has-children">
-        <a href="#" (click)="toggleMobileDropdown($event)">{{'navbar-07' | translate}}<span class="mobile-dropdown-arrow">▾</span></a>
+        <a href="#" (click)="toggleMobileDropdown($event)">{{'navbar-07' | translate}}<span
+            class="mobile-dropdown-arrow">▾</span></a>
         <ul class="dropdown">
           <li><a routerLink="/how-it-works" (click)="onNavLinkClick()">{{'navbar-07' | translate}}</a></li>
           <li><a routerLink="/how-it-works/register" (click)="onNavLinkClick()">{{'navbar-08' | translate}}</a></li>
-          <li><a routerLink="/how-it-works/initial-deposit" (click)="onNavLinkClick()">{{'navbar-09' | translate}}</a></li>
+          <li><a routerLink="/how-it-works/initial-deposit" (click)="onNavLinkClick()">{{'navbar-09' | translate}}</a>
+          </li>
           <li><a routerLink="/how-it-works/start" (click)="onNavLinkClick()">{{'navbar-10' | translate}}</a></li>
         </ul>
       </li>
@@ -152,8 +168,10 @@
       <li><a routerLink="/faq" (click)="onNavLinkClick()">{{'navbar-13' | translate}}</a></li>
 
       <li class="mobile-buttons">
-        <button class="btn btn-primary mobile-btn" (click)="openLogin(); closeMenu()">{{'navbar-14' | translate}}</button>
-        <button class="btn btn-secondary mobile-btn" (click)="openRealAccount(); closeMenu()">{{'navbar-15' | translate}}</button>
+        <button class="btn btn-primary mobile-btn" (click)="openLogin(); closeMenu()">{{'navbar-14' |
+          translate}}</button>
+        <button class="btn btn-secondary mobile-btn" (click)="openRealAccount(); closeMenu()">{{'navbar-15' |
+          translate}}</button>
       </li>
     </ul>
   </div>

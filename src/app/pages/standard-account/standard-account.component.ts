@@ -24,7 +24,6 @@ export class StandardAccountComponent implements OnInit {
     // - Abrir modal de cadastro
     // - Integrar com API de abertura de conta
     
-    alert('Redirecionando para abertura da Conta Standard...');
     
     // Exemplo de redirecionamento:
     // this.router.navigate(['/register'], { 

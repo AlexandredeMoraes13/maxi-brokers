@@ -863,6 +863,8 @@
   text-shadow: 0 0 8px rgba(255, 119, 58, 0.5);
 }
 
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-title {

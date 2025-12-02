@@ -178,7 +178,7 @@
 .cta-description {
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: #e0e0e0;
-  max-width: 500px;
+  max-width: 750px;
   margin: 0 auto 2.5rem;
   line-height: 1.6;
 }

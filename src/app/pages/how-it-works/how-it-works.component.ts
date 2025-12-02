@@ -18,17 +18,17 @@ export class HowItWorksComponent implements OnInit {
    * Inicia o processo de registro
    */
   startRegistration(): void {
-    console.log('Iniciando processo de registro...');
+   /*  console.log('Iniciando processo de registro...');
     // this.router.navigate(['/register']);
-    alert('Redirecionando para o registro...');
+    alert('Redirecionando para o registro...'); */
   }
 
   /**
    * Abre o suporte ou chat
    */
   contactSupport(): void {
-    console.log('Abrindo chat de suporte...');
+    /* console.log('Abrindo chat de suporte...');
     // this.router.navigate(['/contact']);
-    alert('Conectando você com nosso especialista...');
+    alert('Conectando você com nosso especialista...'); */
   }
 }

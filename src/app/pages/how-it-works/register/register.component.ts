@@ -19,8 +19,8 @@ export class RegisterComponent implements OnInit {
   }
 
   startRegistration(): void {
-    console.log('Iniciando cadastro rápido...');
+   /*  console.log('Iniciando cadastro rápido...');
     // this.router.navigate(['/register']);
-    alert('Iniciando processo de cadastro...');
+    alert('Iniciando processo de cadastro...'); */
   }
 }

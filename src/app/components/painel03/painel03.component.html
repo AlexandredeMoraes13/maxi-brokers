@@ -7,7 +7,7 @@
     </div>
 
     <!-- Botões hero-buttons adicionados aqui -->
-    
+
 
     <div class="box">
       <div class="metrics-section">
@@ -35,28 +35,23 @@
         </div>
       </div>
 
-      
+
 
       <!-- Assets em linha horizontal com dados dinâmicos -->
       <div class="assets-horizontal">
-        <div 
-          *ngFor="let asset of assets" 
-          class="asset-card-horizontal"
-          [class.updating]="asset.isUpdating">
-          
+        <div *ngFor="let asset of assets" class="asset-card-horizontal" [class.updating]="asset.isUpdating">
+
           <div class="asset-icon">
             <img class="img-actives" [src]="asset.imageUrl" [alt]="asset.name">
           </div>
-          
+
           <div class="asset-info">
             <h3 class="asset-name">{{ asset.name }}</h3>
             <div class="asset-price">{{ formatPrice(asset.price) }}</div>
             <div class="asset-symbol">{{ asset.symbol }}</div>
           </div>
-          
-          <div 
-            class="asset-change" 
-            [class.positive]="asset.changePercent >= 0"
+
+          <div class="asset-change" [class.positive]="asset.changePercent >= 0"
             [class.negative]="asset.changePercent < 0">
             {{ formatChange(asset.changePercent) }}
           </div>
@@ -64,22 +59,23 @@
       </div>
     </div>
 
-    
+
 
     <div class="global-access">
       <span>{{'painel03-09'|translate}}</span>
     </div>
 
     <div class="hero-buttons">
-      <button class="btn btn-primary" (click)="startInvesting()">
-        {{'painel01-04'|translate}}
-      </button>
-      
+      <a href="https://app.maxibrokers.com/user-registration"><button class="btn btn-primary"
+          (click)="startInvesting()">
+          {{'painel01-04'|translate}}
+        </button></a>
+
     </div>
 
   </div>
 
-  
+
 
   <!-- Background elements simplificados -->
   <div class="universe-background">
@@ -88,5 +84,5 @@
     <div class="bg-orb orb-2"></div>
   </div>
 
-  
+
 </section>

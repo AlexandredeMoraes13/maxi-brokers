@@ -357,7 +357,7 @@
 
 .cta-button.vip-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 15px 30px #ff520066;
 }
 
 .support-info {

@@ -24,14 +24,6 @@ export class PremiumAccountComponent implements OnInit {
     // - Abrir modal de cadastro
     // - Integrar com API de abertura de conta
     
-    alert('Redirecionando para abertura da Conta Premium...');
     
-    // Exemplo de redirecionamento:
-    // this.router.navigate(['/register'], { 
-    //   queryParams: { 
-    //     accountType: 'premium',
-    //     minDeposit: 5000 
-    //   } 
-    // });
   }
 }

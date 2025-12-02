@@ -895,4 +895,81 @@
   .newsletter-section {
     padding: 1.5rem;
   }
+
+/* Adicione estas regras ao seu CSS existente */
+
+/* Estilos para os links de router */
+.footer-link {
+  color: #a0a0b0;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+  transform: translateX(5px);
+}
+
+.footer-link:hover i {
+  transform: translateX(3px);
+}
+
+/* Para links desabilitados enquanto não tem rota implementada */
+.footer-link.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.footer-link.disabled:hover {
+  transform: none;
+  color: #a0a0b0;
+}
+
+/* Estilos para os legal links */
+.legal-link {
+  color: #a0a0b0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.legal-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #ff5200;
+  transition: width 0.3s ease;
+}
+
+.legal-link:hover {
+  color: #ffffff;
+}
+
+.legal-link:hover::after {
+  width: 100%;
+}
+
+/* Adicione ao final do CSS existente para responsividade */
+@media (max-width: 768px) {
+  .legal-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}  
 }

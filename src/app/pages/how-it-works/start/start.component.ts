@@ -19,14 +19,14 @@ export class StartComponent implements OnInit {
   }
 
   startTrading(): void {
-    console.log('Acessando plataforma de trading...');
+    /* console.log('Acessando plataforma de trading...');
     // this.router.navigate(['/trading-platform']);
-    alert('Redirecionando para plataforma de trading...');
+    alert('Redirecionando para plataforma de trading...'); */
   }
 
   openDemoAccount(): void {
-    console.log('Abrindo conta demo...');
+   /*  console.log('Abrindo conta demo...');
     // this.router.navigate(['/demo-account']);
-    alert('Criando conta demo gratuita...');
+    alert('Criando conta demo gratuita...'); */
   }
 }

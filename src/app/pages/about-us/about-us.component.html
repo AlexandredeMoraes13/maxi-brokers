@@ -341,12 +341,12 @@
           {{'about-us01-75'|translate}}
         </p>
         <div class="cta-buttons">
-          <button class="cta-button primary" (click)="startRegistration()">
-            {{'about-us01-76'|translate}}
-          </button>
-          <button class="cta-button secondary" (click)="learnMore()">
-            {{'about-us01-77'|translate}}
-          </button>
+          <a routerLink="/how-it-works/register"><button class="cta-button primary" (click)="startRegistration()">
+              {{'about-us01-76'|translate}}
+            </button></a>
+          <a routerLink="/how-it-works"><button class="cta-button secondary" (click)="learnMore()">
+              {{'about-us01-77'|translate}}
+            </button></a>
         </div>
         <div class="cta-features">
           <div class="feature">
@@ -376,33 +376,4 @@
     <div class="bg-particle particle-3"></div>
   </div>
 
-  <!-- Background Elements - Tema Financeiro -->
-  <div class="background-elements">
-    <div class="bg-grid"></div>
-
-    <!-- Gráficos -->
-    <div class="bg-chart chart-1"></div>
-    <div class="bg-chart chart-2"></div>
-    <div class="bg-chart chart-3"></div>
-
-    <!-- Cifrões -->
-    <div class="bg-currency currency-1">$</div>
-    <div class="bg-currency currency-2">€</div>
-    <div class="bg-currency currency-3">£</div>
-    <div class="bg-currency currency-4">¥</div>
-
-    <!-- Setas de Tendência -->
-    <div class="bg-trend trend-up trend-1">📈</div>
-    <div class="bg-trend trend-down trend-2">📉</div>
-    <div class="bg-trend trend-up trend-3">📈</div>
-
-    <!-- Números -->
-    <div class="bg-numbers number-1">1.2345</div>
-    <div class="bg-numbers number-2">98.765</div>
-    <div class="bg-numbers number-3">0.5678</div>
-
-    <!-- Linhas de Trading -->
-    <div class="bg-trading-line trading-line-1"></div>
-    <div class="bg-trading-line trading-line-2"></div>
-  </div>
 </section>

@@ -19,8 +19,8 @@ export class InitialDepositComponent implements OnInit {
   }
 
   startDeposit(): void {
-    console.log('Iniciando processo de depósito...');
+   /*  console.log('Iniciando processo de depósito...');
     // this.router.navigate(['/deposit']);
-    alert('Redirecionando para área de depósitos...');
+    alert('Redirecionando para área de depósitos...'); */
   }
 }
