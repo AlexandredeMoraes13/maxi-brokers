@@ -1,0 +1,525 @@
+/* ================================================================
+   PAINEL AVISO DE MANUTENÇÃO — Maxi Brokers
+   Identidade: dark #000 · laranja #ff5200 / #ff6b35 / #ff8c42
+   ================================================================ */
+
+/* ── Seção (full-screen) ── */
+.av-section {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #000 0%, #0a0808 50%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7rem 1.5rem 5rem;
+  overflow: hidden;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+/* ── Grid de fundo animado ── */
+.av-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 107, 53, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 107, 53, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: avGridMove 22s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes avGridMove {
+  from { background-position: 0 0; }
+  to   { background-position: 48px 48px; }
+}
+
+/* ── Orbes de brilho ── */
+.av-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.av-orb-1 {
+  width: 520px;
+  height: 520px;
+  top: -160px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(255, 82, 0, 0.1) 0%, transparent 65%);
+  animation: avOrbPulse 6s ease-in-out infinite;
+}
+
+.av-orb-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -120px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.08) 0%, transparent 65%);
+  animation: avOrbPulse 8s ease-in-out infinite reverse;
+}
+
+@keyframes avOrbPulse {
+  0%, 100% { transform: scale(1);   opacity: 0.8; }
+  50%       { transform: scale(1.15); opacity: 1; }
+}
+
+/* ── Scanline decorativo ── */
+.av-scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 107, 53, 0.008) 3px,
+    rgba(255, 107, 53, 0.008) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Container central ── */
+.av-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ── Badge de status ── */
+.av-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(255, 82, 0, 0.1);
+  border: 1px solid rgba(255, 107, 53, 0.35);
+  color: #ff8c42;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.38rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 2rem;
+  animation: avFadeDown 0.6s ease both;
+}
+
+.av-badge-icon {
+  font-size: 0.78rem;
+  color: #ff6b35;
+}
+
+.av-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff5200;
+  animation: avDotPulse 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes avDotPulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(0.65); }
+}
+
+/* ── Título ── */
+.av-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 1.25rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  animation: avFadeUp 0.7s ease 0.1s both;
+}
+
+.av-title-accent {
+  color: #ff5200;
+  text-shadow: 0 2px 16px rgba(255, 82, 0, 0.4);
+}
+
+/* ── Subtítulo ── */
+.av-subtitle {
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  color: #b0b0b8;
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  animation: avFadeUp 0.7s ease 0.2s both;
+}
+
+.av-subtitle strong {
+  color: #e0e0e0;
+  font-weight: 700;
+}
+
+/* ── Barra de progresso decorativa ── */
+.av-progress-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  animation: avFadeUp 0.7s ease 0.3s both;
+}
+
+.av-progress-track {
+  width: 220px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.av-progress-bar {
+  height: 100%;
+  width: 65%;
+  background: linear-gradient(90deg, #ff5200, #ff8c42);
+  border-radius: 50px;
+  animation: avProgressShimmer 2.5s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+}
+
+@keyframes avProgressShimmer {
+  0%   { width: 55%; opacity: 0.8; }
+  50%  { width: 72%; opacity: 1; }
+  100% { width: 55%; opacity: 0.8; }
+}
+
+.av-progress-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 140, 66, 0.75);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* ── Grid de cards ── */
+.av-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.1rem;
+  margin-bottom: 3rem;
+  text-align: left;
+  animation: avFadeUp 0.7s ease 0.4s both;
+}
+
+/* ── Card individual ── */
+.av-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.028);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 2px solid #ff5200;
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+              border-color 0.3s ease, background 0.3s ease;
+}
+
+/* Gradiente interno no hover */
+.av-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 82, 0, 0.07) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Linha de brilho no topo */
+.av-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 107, 53, 0.6),
+    transparent
+  );
+  border-radius: 50%;
+}
+
+.av-card:hover {
+  background: rgba(255, 82, 0, 0.055);
+  border-color: rgba(255, 107, 53, 0.25);
+  border-top-color: #ff6b35;
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.5),
+    0 0 28px rgba(255, 107, 53, 0.1);
+}
+
+.av-card:hover::before { opacity: 1; }
+
+/* Cabeçalho do card (ícone + tag) */
+.av-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.av-card-icon {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff5200 0%, #ff8c42 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 5px 18px rgba(255, 82, 0, 0.45);
+  overflow: hidden;
+}
+
+/* Brilho glass no ícone */
+.av-card-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(255,255,255,0.22) 0%, transparent 55%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.av-card-tag {
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #ff8c42;
+  background: rgba(255, 107, 53, 0.1);
+  border: 1px solid rgba(255, 107, 53, 0.22);
+  padding: 0.22rem 0.6rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+/* Título do card */
+.av-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+/* Descrição do card */
+.av-card-desc {
+  font-size: 0.8rem;
+  color: #909098;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+/* Métrica de destaque */
+.av-card-metric {
+  display: flex;
+  align-items: center;
+  gap: 0.38rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #ff6b35;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.75rem;
+  margin-top: auto;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.av-card-metric i {
+  font-size: 0.68rem;
+  opacity: 0.85;
+}
+
+/* ── Rodapé / CTA ── */
+.av-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: avFadeUp 0.7s ease 0.55s both;
+}
+
+/* Botão de continuar */
+.av-btn-continue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.9rem 2.2rem;
+  background: linear-gradient(135deg, #ff5200 0%, #ff8c42 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Inter', Arial, sans-serif;
+  letter-spacing: 0.01em;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 22px rgba(255, 82, 0, 0.38);
+}
+
+.av-btn-continue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 82, 0, 0.52);
+}
+
+.av-btn-continue:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(255, 82, 0, 0.35);
+}
+
+.av-btn-continue:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.av-btn-continue i {
+  font-size: 0.85rem;
+  animation: avBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes avBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(4px); }
+}
+
+/* Nota de rodapé */
+.av-footer-note {
+  font-size: 0.78rem;
+  color: rgba(160, 160, 176, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 520px;
+  text-align: center;
+  line-height: 1.5;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.av-footer-note i {
+  font-size: 0.8rem;
+  color: #ff6b35;
+  flex-shrink: 0;
+}
+
+/* Indicador de scroll */
+.av-scroll-hint {
+  margin-top: 0.5rem;
+  color: rgba(255, 107, 53, 0.45);
+  font-size: 1.1rem;
+  animation: avScrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes avScrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.45; }
+  50%       { transform: translateY(8px); opacity: 0.8; }
+}
+
+/* ── Animações de entrada ── */
+@keyframes avFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes avFadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================================================
+   RESPONSIVO
+   ================================================================ */
+@media (max-width: 1100px) {
+  .av-grid-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .av-section {
+    padding: 6rem 1.2rem 4rem;
+  }
+
+  .av-title {
+    font-size: clamp(1.9rem, 6vw, 2.8rem);
+  }
+
+  .av-progress-wrap {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .av-progress-track {
+    width: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .av-grid-cards {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .av-card {
+    padding: 1.25rem 1rem 1.1rem;
+  }
+
+  .av-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .av-btn-continue {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  .av-footer-note {
+    font-size: 0.73rem;
+    text-align: center;
+  }
+}
+
+/* Preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .av-grid,
+  .av-orb-1,
+  .av-orb-2,
+  .av-badge-dot,
+  .av-progress-bar,
+  .av-scroll-hint,
+  .av-btn-continue i {
+    animation: none;
+  }
+
+  .av-card:hover,
+  .av-btn-continue:hover {
+    transform: none;
+  }
+}

@@ -37,6 +37,7 @@ import { StartComponent } from './pages/how-it-works/start/start.component';
 // Importe o AppRoutingModule
 import { AppRoutingModule } from './app-routing.module';
 import { MarketComponent } from './pages/market/market.component';
+import { PainelAvisoComponent } from './components/painel-aviso/painel-aviso.component';
 
 // Factory function para o HttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -70,7 +71,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterComponent,
     InitialDepositComponent,
     StartComponent,
-    MarketComponent
+    MarketComponent,
+    PainelAvisoComponent
   ],
   imports: [
     BrowserModule,

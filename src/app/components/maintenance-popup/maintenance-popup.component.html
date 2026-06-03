@@ -1,0 +1,211 @@
+<div
+  *ngIf="isVisible"
+  class="mp-overlay"
+  [class.mp-closing]="isClosing"
+  (click)="onOverlayClick($event)"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="mp-title"
+  aria-describedby="mp-desc"
+>
+  <div class="mp-card">
+
+    <!-- Fundo animado (grid) -->
+    <div class="mp-grid-bg" aria-hidden="true"></div>
+    <!-- Orbe de brilho laranja -->
+    <div class="mp-glow-orb" aria-hidden="true"></div>
+
+    <!-- Conteúdo real do card -->
+    <div class="mp-content">
+
+      <!-- Botão fechar -->
+      <button
+        class="mp-close-btn"
+        (click)="close()"
+        aria-label="Fechar aviso e continuar navegando"
+        title="Fechar"
+      >
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+
+      <!-- Logo da marca -->
+      <div class="mp-brand">
+        <img
+          src="https://i.imgur.com/1o6ZEBu.png"
+          alt="Maxi Brokers"
+          class="mp-logo"
+        />
+        <div class="mp-brand-divider" aria-hidden="true"></div>
+      </div>
+
+      <!-- Badge de status -->
+      <div class="mp-status-badge" role="status">
+        <span class="mp-badge-dot" aria-hidden="true"></span>
+        <span>Atualização em andamento</span>
+      </div>
+
+      <!-- Ícone + Título -->
+      <div class="mp-header">
+        <div class="mp-header-icon" aria-hidden="true">
+          <i class="fas fa-tools"></i>
+        </div>
+        <div>
+          <h2 class="mp-title" id="mp-title">Estamos evoluindo para você</h2>
+          <p class="mp-subtitle" id="mp-desc">
+            Nossa plataforma está em processo de melhorias e novas implementações.
+            O site <strong>permanece no ar</strong>, mas podem ocorrer oscilações
+            pontuais no momento do login. Agradecemos sua compreensão.
+          </p>
+        </div>
+      </div>
+
+      <!-- Grid de melhorias -->
+      <p class="mp-section-label">
+        <i class="fas fa-list-check" aria-hidden="true"></i>
+        O que está sendo atualizado
+      </p>
+      <div class="mp-improvements" role="list">
+        <div class="mp-imp-item" role="listitem">
+          <div class="mp-imp-icon mp-imp-1" aria-hidden="true">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <div class="mp-imp-text">
+            <strong>Performance</strong>
+            <span>Servidores mais rápidos e menor latência nas operações</span>
+          </div>
+        </div>
+        <div class="mp-imp-item" role="listitem">
+          <div class="mp-imp-icon mp-imp-2" aria-hidden="true">
+            <i class="fas fa-shield-halved"></i>
+          </div>
+          <div class="mp-imp-text">
+            <strong>Segurança</strong>
+            <span>Criptografia avançada e autenticação ainda mais reforçada</span>
+          </div>
+        </div>
+        <div class="mp-imp-item" role="listitem">
+          <div class="mp-imp-icon mp-imp-3" aria-hidden="true">
+            <i class="fas fa-wand-magic-sparkles"></i>
+          </div>
+          <div class="mp-imp-text">
+            <strong>Novas Funcionalidades</strong>
+            <span>Novos ativos, ferramentas e recursos analíticos avançados</span>
+          </div>
+        </div>
+        <div class="mp-imp-item" role="listitem">
+          <div class="mp-imp-icon mp-imp-4" aria-hidden="true">
+            <i class="fas fa-display"></i>
+          </div>
+          <div class="mp-imp-text">
+            <strong>Interface</strong>
+            <span>Design renovado com navegação mais intuitiva e fluida</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blocos: prazo e segurança -->
+      <div class="mp-info-row">
+        <div class="mp-info-block mp-info-time">
+          <i class="fas fa-clock" aria-hidden="true"></i>
+          <div>
+            <strong>Previsão de conclusão</strong>
+            <span>Nas próximas horas. Nossa equipe trabalha ininterruptamente
+              para concluir o mais rápido possível.</span>
+          </div>
+        </div>
+        <div class="mp-info-block mp-info-safe">
+          <i class="fas fa-lock" aria-hidden="true"></i>
+          <div>
+            <strong>Seus dados estão protegidos</strong>
+            <span>Investimentos e informações pessoais permanecem
+              completamente seguros durante todo o processo.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notificação por e-mail -->
+      <div class="mp-notify" role="region" aria-label="Receber notificação por e-mail">
+        <p class="mp-notify-label">
+          <i class="fas fa-bell" aria-hidden="true"></i>
+          Quer ser avisado quando tudo estiver normalizado?
+        </p>
+        <div *ngIf="!notificationSent" class="mp-notify-form">
+          <label for="mp-email-input" class="mp-visually-hidden">Seu e-mail para notificação</label>
+          <input
+            id="mp-email-input"
+            type="email"
+            [(ngModel)]="notificationEmail"
+            (input)="onEmailInput()"
+            (keydown.enter)="submitNotification()"
+            placeholder="seu@email.com"
+            class="mp-email-input"
+            [class.mp-input-error]="notificationError"
+            autocomplete="email"
+            [attr.aria-invalid]="notificationError ? 'true' : null"
+            aria-describedby="mp-email-error"
+          />
+          <button class="mp-notify-btn" (click)="submitNotification()" type="button">
+            Notificar-me
+          </button>
+        </div>
+        <p *ngIf="notificationError" id="mp-email-error" class="mp-error-msg" role="alert">
+          <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+          Por favor, insira um e-mail válido.
+        </p>
+        <div *ngIf="notificationSent" class="mp-notify-success" role="status" aria-live="polite">
+          <i class="fas fa-check-circle" aria-hidden="true"></i>
+          Cadastrado! Você receberá um aviso assim que a plataforma estiver totalmente operacional.
+        </div>
+      </div>
+
+      <!-- Suporte -->
+      <div class="mp-support" role="region" aria-label="Canais de suporte">
+        <p class="mp-support-title">Suporte disponível 24h / 7 dias</p>
+        <div class="mp-support-links">
+          <a href="mailto:suporte@maxibrokers.com" class="mp-support-link" aria-label="Entrar em contato por e-mail">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+            <span>E-mail</span>
+          </a>
+          <a href="https://wa.me/551199999999" class="mp-support-link" target="_blank" rel="noopener noreferrer" aria-label="Falar pelo WhatsApp (abre em nova aba)">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            <span>WhatsApp</span>
+          </a>
+          <a href="#" class="mp-support-link" aria-label="Iniciar chat ao vivo">
+            <i class="fas fa-comment-dots" aria-hidden="true"></i>
+            <span>Chat ao vivo</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links úteis -->
+      <nav class="mp-links" aria-label="Links úteis">
+        <a href="#" class="mp-link">
+          <i class="fas fa-question-circle" aria-hidden="true"></i>
+          Central de Ajuda
+        </a>
+        <span class="mp-links-sep" aria-hidden="true">·</span>
+        <a href="#" class="mp-link">
+          <i class="fas fa-signal" aria-hidden="true"></i>
+          Status da Plataforma
+        </a>
+        <span class="mp-links-sep" aria-hidden="true">·</span>
+        <a href="#" class="mp-link" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram" aria-hidden="true"></i>
+          Instagram
+        </a>
+        <span class="mp-links-sep" aria-hidden="true">·</span>
+        <a href="#" class="mp-link" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-telegram" aria-hidden="true"></i>
+          Telegram
+        </a>
+      </nav>
+
+      <!-- Botão continuar -->
+      <button class="mp-continue-btn" (click)="close()" type="button">
+        Entendi, continuar navegando
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </button>
+
+    </div><!-- /mp-content -->
+  </div><!-- /mp-card -->
+</div><!-- /mp-overlay -->
