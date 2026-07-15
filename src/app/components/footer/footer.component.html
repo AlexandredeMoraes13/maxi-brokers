@@ -196,13 +196,14 @@
         <div class="newsletter-form">
           <div class="input-container">
             <i class="fas fa-envelope input-icon"></i>
-            <input type="email" placeholder="{{'footer-28' | translate}}" class="newsletter-input">
+            <input type="email" placeholder="{{'footer-28' | translate}}" class="newsletter-input"
+              [(ngModel)]="newsletterEmail">
             <div class="input-underline"></div>
           </div>
-          <button class="newsletter-btn">
+          <a [href]="supportUrl" target="_blank" rel="noopener" class="newsletter-btn">
             <span>{{'footer-29' | translate}}</span>
             <i class="fas fa-paper-plane"></i>
-          </button>
+          </a>
         </div>
       </div>
     </div>

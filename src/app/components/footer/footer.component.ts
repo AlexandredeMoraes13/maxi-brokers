@@ -6,6 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-  // Componente simplificado - todo o conteúdo está no HTML agora
-  // Isso facilitará a implementação da tradução posteriormente
+  newsletterEmail = '';
+
+  // URL da Central de Atendimento com o e-mail já preenchido.
+  // Usada num link nativo (target="_blank") para abrir em nova guia
+  // sem risco de bloqueio de popup.
+  get supportUrl(): string {
+    const email = this.newsletterEmail.trim();
+    return email
+      ? `/atendimento?email=${encodeURIComponent(email)}`
+      : '/atendimento';
+  }
 }

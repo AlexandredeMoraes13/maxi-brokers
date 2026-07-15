@@ -1,0 +1,158 @@
+<section class="support-section">
+
+  <!-- Fundo sutil -->
+  <div class="support-bg">
+    <div class="bg-grid"></div>
+    <div class="bg-orb"></div>
+  </div>
+
+  <div class="support-container">
+
+    <!-- Header -->
+    <div class="support-header">
+      <button class="back-button" routerLink="/">
+        <i class="fas fa-arrow-left"></i> Voltar ao início
+      </button>
+      <span class="support-badge">Central de Atendimento</span>
+    </div>
+
+    <!-- ESTADO 1: Formulário -->
+    <ng-container *ngIf="!submitted">
+
+      <div class="support-hero">
+        <img src="https://i.imgur.com/1o6ZEBu.png" alt="Maxi Brokers" class="support-logo">
+        <h1 class="support-title">Como podemos ajudar você?</h1>
+        <p class="support-subtitle">
+          Nossa equipe de especialistas está pronta para atender você. Preencha os dados abaixo
+          e retornaremos o mais breve possível com uma solução personalizada.
+        </p>
+      </div>
+
+      <!-- Formulário -->
+      <div class="support-form-card">
+        <div class="form-card-head">
+          <h2 class="form-card-title">Entre em contato</h2>
+          <p class="form-card-desc">
+            Preencha as informações com o máximo de detalhes para agilizar o seu atendimento.
+          </p>
+        </div>
+
+        <div class="form-grid">
+          <!-- E-mail -->
+          <div class="form-field">
+            <label>E-mail para contato <span class="req">*</span></label>
+            <input type="email" [(ngModel)]="form.email" placeholder="seu@email.com"
+              [class.error]="attemptedSubmit && (!form.email || !isEmailValid(form.email))">
+            <small class="field-error" *ngIf="attemptedSubmit && !form.email">Informe seu e-mail.</small>
+            <small class="field-error" *ngIf="attemptedSubmit && form.email && !isEmailValid(form.email)">
+              E-mail inválido.
+            </small>
+          </div>
+
+          <!-- Assunto -->
+          <div class="form-field">
+            <label>Assunto <span class="req">*</span></label>
+            <input type="text" [(ngModel)]="form.subject" placeholder="Ex: Dúvida sobre meu depósito"
+              [class.error]="attemptedSubmit && !form.subject">
+            <small class="field-error" *ngIf="attemptedSubmit && !form.subject">Informe o assunto.</small>
+          </div>
+
+          <!-- Motivo -->
+          <div class="form-field">
+            <label>Motivo de contato <span class="req">*</span></label>
+            <select [(ngModel)]="form.reason" [class.error]="attemptedSubmit && !form.reason">
+              <option value="" disabled selected>Selecione o motivo</option>
+              <option *ngFor="let r of reasons" [value]="r">{{ r }}</option>
+            </select>
+            <small class="field-error" *ngIf="attemptedSubmit && !form.reason">Selecione um motivo.</small>
+          </div>
+
+          <!-- Plataforma -->
+          <div class="form-field">
+            <label>Plataforma de acesso <span class="req">*</span></label>
+            <select [(ngModel)]="form.platform" [class.error]="attemptedSubmit && !form.platform">
+              <option value="" disabled selected>Selecione a plataforma</option>
+              <option *ngFor="let p of platforms" [value]="p">{{ p }}</option>
+            </select>
+            <small class="field-error" *ngIf="attemptedSubmit && !form.platform">Selecione a plataforma.</small>
+          </div>
+
+          <!-- Descrição -->
+          <div class="form-field full">
+            <label>Descrição <span class="req">*</span></label>
+            <textarea [(ngModel)]="form.description" rows="5"
+              placeholder="Descreva sua solicitação com o máximo de detalhes possível..."
+              [class.error]="attemptedSubmit && !form.description"></textarea>
+            <small class="field-error" *ngIf="attemptedSubmit && !form.description">Descreva sua solicitação.</small>
+          </div>
+
+          <!-- Anexo -->
+          <div class="form-field full">
+            <label>Anexo <span class="opt">(opcional)</span></label>
+            <label class="file-drop">
+              <span *ngIf="!attachmentName">Clique para anexar um arquivo</span>
+              <span *ngIf="attachmentName" class="file-name">{{ attachmentName }}</span>
+              <input type="file" (change)="onFileSelected($event)" hidden>
+            </label>
+          </div>
+        </div>
+
+        <button class="submit-btn" (click)="submit()">Enviar solicitação</button>
+
+        <p class="form-privacy">
+          Seus dados são tratados com segurança de nível bancário e usados apenas para o seu atendimento.
+        </p>
+      </div>
+
+      <!-- Informações de contato -->
+      <div class="support-info">
+        <div class="info-item">
+          <span class="info-label">E-mail</span>
+          <span class="info-value">support&#64;maxibrokers.com</span>
+        </div>
+        <div class="info-divider"></div>
+        <div class="info-item">
+          <span class="info-label">Horário</span>
+          <span class="info-value">Atendimento 24 horas, 7 dias por semana</span>
+        </div>
+        <div class="info-divider"></div>
+        <div class="info-item">
+          <span class="info-label">Central de ajuda</span>
+          <span class="info-value"><a routerLink="/faq">Perguntas frequentes</a></span>
+        </div>
+      </div>
+
+    </ng-container>
+
+    <!-- ESTADO 2: Sucesso -->
+    <ng-container *ngIf="submitted">
+      <div class="success-card">
+        <div class="success-check">
+          <i class="fas fa-check"></i>
+        </div>
+        <h1 class="success-title">Solicitação enviada com sucesso</h1>
+        <p class="success-text">
+          Recebemos o seu contato e nossa equipe já está cuidando disso. Você receberá o retorno no e-mail
+          <strong>{{ form.email }}</strong>.
+        </p>
+
+        <div class="protocol-box">
+          <span class="protocol-label">Número do protocolo</span>
+          <span class="protocol-number">{{ protocol }}</span>
+        </div>
+
+        <div class="success-summary">
+          <div class="summary-row"><span>Motivo</span><strong>{{ form.reason }}</strong></div>
+          <div class="summary-row"><span>Plataforma</span><strong>{{ form.platform }}</strong></div>
+          <div class="summary-row"><span>Assunto</span><strong>{{ form.subject }}</strong></div>
+        </div>
+
+        <div class="success-actions">
+          <button class="submit-btn" routerLink="/">Voltar ao início</button>
+          <button class="ghost-btn" (click)="novoChamado()">Abrir nova solicitação</button>
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+</section>

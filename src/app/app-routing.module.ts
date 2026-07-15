@@ -14,6 +14,7 @@ import { StartComponent } from './pages/how-it-works/start/start.component';
 import { NewsComponent } from './pages/news/news.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { MarketComponent } from './pages/market/market.component';
+import { SupportComponent } from './pages/support/support.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: "faq", component: FaqComponent },
   { path: "market", component: MarketComponent },
   { path: "market/:asset", component: MarketComponent }, // Nova rota para ativos específicos
+  { path: "atendimento", component: SupportComponent },
 ];
 
 @NgModule({
