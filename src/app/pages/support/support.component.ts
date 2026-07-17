@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SupportService } from './support.service';
 
 @Component({
   selector: 'app-support',
@@ -21,6 +22,8 @@ export class SupportComponent implements OnInit {
   submitted = false;
   protocol = '';
   attemptedSubmit = false;
+  sending = false;
+  sendError = false;
 
   reasons: string[] = [
     'Conta e cadastro',
@@ -39,7 +42,10 @@ export class SupportComponent implements OnInit {
     'Plataforma Desktop'
   ];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private support: SupportService
+  ) { }
 
   ngOnInit(): void {
     // Pré-preenche o e-mail vindo do formulário "Fique Atualizado"
@@ -74,9 +80,32 @@ export class SupportComponent implements OnInit {
 
   submit(): void {
     this.attemptedSubmit = true;
-    if (!this.isValid()) {
+    this.sendError = false;
+    if (!this.isValid() || this.sending) {
       return;
     }
+
+    // Sem backend configurado ainda: confirma localmente (modo seguro/placeholder)
+    if (!this.support.isConfigured) {
+      this.finishSuccess();
+      return;
+    }
+
+    // Com backend: envia de fato e só confirma após sucesso
+    this.sending = true;
+    this.support.send(this.form).subscribe({
+      next: () => {
+        this.sending = false;
+        this.finishSuccess();
+      },
+      error: () => {
+        this.sending = false;
+        this.sendError = true;
+      }
+    });
+  }
+
+  private finishSuccess(): void {
     this.protocol = this.generateProtocol();
     this.submitted = true;
     window.scrollTo(0, 0);
@@ -92,6 +121,7 @@ export class SupportComponent implements OnInit {
   novoChamado(): void {
     this.submitted = false;
     this.attemptedSubmit = false;
+    this.sendError = false;
     this.protocol = '';
     this.attachmentName = '';
     this.form = { email: '', reason: '', platform: '', subject: '', description: '' };

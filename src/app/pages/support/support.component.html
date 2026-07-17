@@ -97,7 +97,14 @@
           </div>
         </div>
 
-        <button class="submit-btn" (click)="submit()">Enviar solicitação</button>
+        <button class="submit-btn" (click)="submit()" [disabled]="sending">
+          {{ sending ? 'Enviando...' : 'Enviar solicitação' }}
+        </button>
+
+        <p class="send-error" *ngIf="sendError">
+          Não foi possível enviar sua solicitação agora. Tente novamente em instantes ou escreva
+          diretamente para <strong>support&#64;maxibrokers.com</strong>.
+        </p>
 
         <p class="form-privacy">
           Seus dados são tratados com segurança de nível bancário e usados apenas para o seu atendimento.

@@ -260,6 +260,26 @@
   box-shadow: 0 8px 24px rgba(255, 82, 0, 0.28);
 }
 
+.submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.send-error {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: rgba(224, 74, 63, 0.1);
+  border: 1px solid rgba(224, 74, 63, 0.35);
+  border-radius: 9px;
+  color: #f0a9a3;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.send-error strong { color: #fff; }
+
 .form-privacy {
   text-align: center;
   margin-top: 1.25rem;

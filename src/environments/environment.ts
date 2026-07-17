@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // URL do backend que recebe as solicitações de atendimento e envia por e-mail.
+  // NÃO contém credenciais — apenas o endereço público do endpoint.
+  // As credenciais do e-mail (login/senha) ficam somente no servidor (variáveis de ambiente).
+  // Deixe vazio até o backend estar pronto; o formulário funciona em modo de confirmação.
+  supportEndpoint: ''
 };
 
 /*
